@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- plugin information -->
+  <name>Content-Length Dispatcher Callback Module</name>
+  <groupId>fi.fmi.geoserver</groupId>
+  <!-- geoserver version is included to the constant id -->
+  <artifactId>contentlength-gs2.7.1</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+
+  <!-- set parent pom to community pom -->
+  <parent>
+    <groupId>org.geoserver</groupId>
+    <artifactId>community</artifactId>
+    <version>2.7.1</version>
+  </parent>
+
+  <!-- declare dependency on geoserver main -->
+  <dependencies>
+    <dependency>
+      <groupId>org.geoserver</groupId>
+      <artifactId>gs-ows</artifactId>
+      <version>${project.parent.version}</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <repositories>
+    <repository>
+      <id>opengeo</id>
+      <name>opengeo</name>
+      <url>http://repo.opengeo.org</url>
+    </repository>
+  </repositories>
+
+</project>
