@@ -16,7 +16,7 @@
   <parent>
     <groupId>org.geoserver</groupId>
     <artifactId>community</artifactId>
-    <version>2.7.1</version>
+    <version>2.11.2</version>
   </parent>
 
   <!-- declare dependency on geoserver main -->
@@ -31,9 +31,9 @@
 
   <repositories>
     <repository>
-      <id>opengeo</id>
-      <name>opengeo</name>
-      <url>http://repo.opengeo.org</url>
+      <id>boundless</id>
+      <name>boundless</name>
+      <url>https://repo.boundlessgeo.com</url>
     </repository>
   </repositories>
 
