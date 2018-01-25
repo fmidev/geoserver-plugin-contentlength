@@ -8,7 +8,7 @@
   <name>Content-Length Dispatcher Callback Module</name>
   <groupId>fi.fmi.geoserver</groupId>
   <!-- geoserver version is included to the constant id -->
-  <artifactId>contentlength-gs2.7.1</artifactId>
+  <artifactId>contentlength-gsX.X.X</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 
@@ -16,7 +16,7 @@
   <parent>
     <groupId>org.geoserver</groupId>
     <artifactId>community</artifactId>
-    <version>2.11.2</version>
+    <version>X.X.X</version>
   </parent>
 
   <!-- declare dependency on geoserver main -->
@@ -33,7 +33,12 @@
     <repository>
       <id>boundless</id>
       <name>boundless</name>
-      <url>https://repo.boundlessgeo.com</url>
+      <url>https://repo.boundlessgeo.com/main</url>
+    </repository>
+    <repository>
+      <id>opengeo</id>
+      <name>opengeo</name>
+      <url>http://download.osgeo.org/webdav/geotools</url>
     </repository>
   </repositories>
 
