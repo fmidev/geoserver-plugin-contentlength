@@ -8,7 +8,7 @@
   <name>Content-Length Dispatcher Callback Module</name>
   <groupId>fi.fmi.geoserver</groupId>
   <!-- geoserver version is included to the constant id -->
-  <artifactId>contentlength-gs2.16.0</artifactId>
+  <artifactId>contentlength-gs2.16.2</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 
@@ -16,7 +16,7 @@
   <parent>
     <groupId>org.geoserver</groupId>
     <artifactId>community</artifactId>
-    <version>2.16.0</version>
+    <version>2.16.2</version>
   </parent>
 
   <!-- declare dependency on geoserver main -->
