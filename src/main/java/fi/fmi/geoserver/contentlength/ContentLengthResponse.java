@@ -12,9 +12,9 @@ import org.geoserver.platform.ServiceException;
 /**
  * Forces Content-Length header for the response if necessary.
  *
- * <p>{ContentLengthResponse} class is meant to be created by its own package classes and it is
- * provided as {org.geoserver.ows.Response} class for other framework classes. This
- * {org.geoserver.ows.Response} class wrapper is used by {ContentLengthDispatcherCallback} class.
+ * <p>{ContentLengthResponse} class is meant to be created by its own package classes and it is provided as
+ * {org.geoserver.ows.Response} class for other framework classes. This {org.geoserver.ows.Response} class wrapper is
+ * used by {ContentLengthDispatcherCallback} class.
  */
 class ContentLengthResponse extends Response {
 
@@ -26,9 +26,7 @@ class ContentLengthResponse extends Response {
 
     /** Output stream is temporarily kept as byte content. */
     private byte[] content;
-    /**
-     * Content-Length of the output stream. Negative value means that the length has not been set.
-     */
+    /** Content-Length of the output stream. Negative value means that the length has not been set. */
     private int contentLength = -1;
 
     /**
@@ -80,11 +78,11 @@ class ContentLengthResponse extends Response {
     /**
      * Set the content length if it does not exist in the {HttpServletResponse}.
      *
-     * <p>This function gets {result} content size which will be set for the Content-Length header
-     * when framework sets headers for the response.
+     * <p>This function gets {result} content size which will be set for the Content-Length header when framework sets
+     * headers for the response.
      *
-     * <p>Notice, stream needs to be read into byte array if this function is used. Then, excess
-     * memory needs to be used to temporarily save stream content.
+     * <p>Notice, stream needs to be read into byte array if this function is used. Then, excess memory needs to be used
+     * to temporarily save stream content.
      *
      * @param request The request.
      * @param operation The operation.
@@ -93,8 +91,7 @@ class ContentLengthResponse extends Response {
      * @return {boolean} {true} if header was set. Else {false}.
      * @throws {IOException} Any I/O errors that occur.
      */
-    public boolean setContentLength(
-            Request request, Operation operation, Object result, Response response)
+    public boolean setContentLength(Request request, Operation operation, Object result, Response response)
             throws IOException {
         boolean contentLengthSet = false;
         // Content-Length header is forced into HttpServletResponse
@@ -118,14 +115,12 @@ class ContentLengthResponse extends Response {
     /**
      * Serializes <code>value</code> to <code>output</code>.
      *
-     * <p>The function uses the byte array {content} if it is available. Also, if {content} is used
-     * here, reference is set to {null} and the content is not available after that. The reason for
-     * this is to relese the content that is originally gotten from the stream to get the content
-     * length. Because content providers may provide the content stream only once, the content needs
-     * to be hold temporarily until it is asked once more by the framework. After that, original
-     * functionality of the framework may be used. Then, framework flow acts as the wrapped
-     * {org.geoserver.ows.Response} would have been used without the content length operation in the
-     * middle of the flow.
+     * <p>The function uses the byte array {content} if it is available. Also, if {content} is used here, reference is
+     * set to {null} and the content is not available after that. The reason for this is to relese the content that is
+     * originally gotten from the stream to get the content length. Because content providers may provide the content
+     * stream only once, the content needs to be hold temporarily until it is asked once more by the framework. After
+     * that, original functionality of the framework may be used. Then, framework flow acts as the wrapped
+     * {org.geoserver.ows.Response} would have been used without the content length operation in the middle of the flow.
      *
      * <p>The <code>operation</code> bean is provided for context.
      *
@@ -135,8 +130,7 @@ class ContentLengthResponse extends Response {
      * @throws IOException Any I/O errors that occur
      * @throws ServiceException Any service errors that occur
      */
-    public void write(Object value, OutputStream output, Operation operation)
-            throws IOException, ServiceException {
+    public void write(Object value, OutputStream output, Operation operation) throws IOException, ServiceException {
         if (null == content) {
             response.write(value, output, operation);
 
@@ -159,12 +153,11 @@ class ContentLengthResponse extends Response {
     }
 
     /**
-     * Returns a 2xn array of Strings, each of which is an HTTP header pair to be set on the HTTP
-     * Response. Can return null if there are no headers to be set on the response.
+     * Returns a 2xn array of Strings, each of which is an HTTP header pair to be set on the HTTP Response. Can return
+     * null if there are no headers to be set on the response.
      *
-     * <p>If content header has been set, this function will append Content-Length header to the 2D
-     * header array that is provided by the {Response} class instance that this class instance
-     * wraps.
+     * <p>If content header has been set, this function will append Content-Length header to the 2D header array that is
+     * provided by the {Response} class instance that this class instance wraps.
      *
      * @param value The value to serialize
      * @param operation The operation being performed.

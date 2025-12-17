@@ -7,11 +7,11 @@
   <parent>
     <groupId>org.geoserver</groupId>
     <artifactId>community</artifactId>
-    <version>2.25.3</version>
+    <version>2.25.7</version>
   </parent>
   <groupId>fi.fmi.geoserver</groupId>
   <!-- geoserver version is included to the constant id -->
-  <artifactId>contentlength-gs2.25.3</artifactId>
+  <artifactId>contentlength-gs2.25.7</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 
