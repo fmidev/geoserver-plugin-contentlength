@@ -1,5 +1,8 @@
 package fi.fmi.geoserver.contentlength;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.http.HttpServletRequest;
 import org.geoserver.ows.DispatcherCallback;
 import org.geoserver.ows.Request;
 import org.geoserver.ows.Response;
@@ -18,6 +21,8 @@ import org.geoserver.platform.ServiceException;
  * <p>This class uses {ContentLengthResponse} to get the content length from the stream content.
  */
 public class ContentLengthDispatcherCallback implements DispatcherCallback {
+
+    private static final Logger LOGGER = Logger.getLogger(ContentLengthDispatcherCallback.class.getName());
 
     /** See parent {org.geoserver.ows.DispatcherCallback} class for function description. */
     public Request init(Request request) {
@@ -70,10 +75,24 @@ public class ContentLengthDispatcherCallback implements DispatcherCallback {
             }
 
         } catch (final Exception e) {
-            // Just ignore whole operation.
-            System.err.println(getClass().getName() + ": " + e.toString());
+            // Just ignore whole operation, but log with full context for diagnosis.
+            LOGGER.log(Level.WARNING, "Failed to set Content-Length for request " + requestUrl(request), e);
         }
         return wrapperResponse;
+    }
+
+    /** Builds the full request URL (including query string), or a placeholder if unavailable. */
+    private static String requestUrl(Request request) {
+        HttpServletRequest httpRequest = request != null ? request.getHttpRequest() : null;
+        if (httpRequest == null) {
+            return "<unknown>";
+        }
+        StringBuilder url = new StringBuilder(httpRequest.getRequestURL());
+        String queryString = httpRequest.getQueryString();
+        if (queryString != null) {
+            url.append('?').append(queryString);
+        }
+        return url.toString();
     }
 
     /** See parent {org.geoserver.ows.DispatcherCallback} class for function description. */
