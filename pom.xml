@@ -12,7 +12,7 @@
   <groupId>fi.fmi.geoserver</groupId>
   <!-- geoserver version is included to the constant id -->
   <artifactId>contentlength-gs2.28.5</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <packaging>jar</packaging>
 
   <!-- plugin information -->
