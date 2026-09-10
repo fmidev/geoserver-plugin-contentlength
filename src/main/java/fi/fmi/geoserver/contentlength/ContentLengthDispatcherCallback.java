@@ -75,8 +75,14 @@ public class ContentLengthDispatcherCallback implements DispatcherCallback {
             }
 
         } catch (final Exception e) {
-            // Just ignore whole operation, but log with full context for diagnosis.
+            // ContentLengthResponse measures the size by writing the response once into a
+            // buffer, which for responses such as RenderedImageMapResponse already disposes
+            // the underlying result (e.g. WMSMapContent) as a side effect. Swallowing this
+            // failure and returning null here would make the framework write the very same,
+            // now-disposed result a second time, turning this real error into a confusing,
+            // unrelated NullPointerException later on. Report the original failure instead.
             LOGGER.log(Level.WARNING, "Failed to set Content-Length for request " + requestUrl(request), e);
+            throw new ServiceException("Failed to render response for request " + requestUrl(request), e);
         }
         return wrapperResponse;
     }
